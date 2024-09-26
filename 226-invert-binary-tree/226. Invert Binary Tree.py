@@ -16,4 +16,4 @@ class Solution:
 
         return root
 
-# O(n), O(h)
+# O(n), O(1)
