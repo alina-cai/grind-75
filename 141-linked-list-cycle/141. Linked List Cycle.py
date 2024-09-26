@@ -16,5 +16,3 @@ class Solution:
                 return True
 
         return False
-
-# O(n), O(1)
