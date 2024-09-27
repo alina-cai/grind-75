@@ -1,9 +1,17 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        countA, countB = Counter(ransomNote), Counter(magazine)
+        if len(magazine) < len(ransomNote):
+            return False
 
-        for ch, count in countA.items():
-            if ch not in countB or countB[ch] < count:
+        count = collections.Counter(magazine)
+
+        for r in ransomNote:
+            if count[r] <= 0:
                 return False
 
+            count[r] -= 1
+
         return True
+
+# time: O(n)
+# space: O(1)
