@@ -3,11 +3,13 @@ class Solution:
         if n <= 3:
             return n
 
-        c1, c2 = 2, 3
+        n1, n2 = 2, 3
 
-        for i in range(4, n + 1):
-            dp = c1 + c2
-            c1 = c2
-            c2 = dp
+        for n in range(4, n + 1):
+            dp = n1 + n2
+            n1 = n2
+            n2 = dp
 
-        return c2
+        return n2
+
+# O(n), O(1)
