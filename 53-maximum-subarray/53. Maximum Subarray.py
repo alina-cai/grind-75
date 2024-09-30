@@ -1,7 +1,6 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        res = nums[0]
-        cur = 0
+        res, cur = nums[0], 0
 
         for n in nums:
             cur += n
@@ -11,5 +10,3 @@ class Solution:
                 cur = 0
 
         return res
-
-# O(n), O(1)
