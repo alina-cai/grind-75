@@ -4,23 +4,21 @@ class Solution:
 
         for t in tokens:
             if t == '+':
-                stack.append(stack.pop() + stack.pop())
+                cur = stack.pop() + stack.pop()
+                stack.append(cur)
             elif t == '-':
-                a = stack.pop()
-                b = stack.pop()
-
-                stack.append(b - a)
+                temp = stack.pop()
+                cur = stack.pop() - temp
+                stack.append(cur)
             elif t == '*':
-                stack.append(stack.pop() * stack.pop())
+                cur = stack.pop() * stack.pop()
+                stack.append(cur)
             elif t == '/':
-                a = stack.pop()
-                b = stack.pop()
+                temp = stack.pop()
+                cur = int(stack.pop() / temp)
 
-                stack.append(int(b / a))
+                stack.append(cur)
             else:
                 stack.append(int(t))
 
         return stack[0]
-
-# time: O(n)
-# space: O(n)
