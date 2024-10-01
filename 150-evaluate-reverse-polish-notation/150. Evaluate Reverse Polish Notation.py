@@ -4,20 +4,17 @@ class Solution:
 
         for t in tokens:
             if t == '+':
-                cur = stack.pop() + stack.pop()
-                stack.append(cur)
+                a, b = stack.pop(), stack.pop()
+                stack.append(a + b)
             elif t == '-':
-                temp = stack.pop()
-                cur = stack.pop() - temp
-                stack.append(cur)
+                a, b = stack.pop(), stack.pop()
+                stack.append(b - a)
             elif t == '*':
-                cur = stack.pop() * stack.pop()
-                stack.append(cur)
+                a, b = stack.pop(), stack.pop()
+                stack.append(a * b)
             elif t == '/':
-                temp = stack.pop()
-                cur = int(stack.pop() / temp)
-
-                stack.append(cur)
+                a, b = stack.pop(), stack.pop()
+                stack.append(int(b / a))
             else:
                 stack.append(int(t))
 
