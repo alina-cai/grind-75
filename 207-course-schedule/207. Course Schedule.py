@@ -1,9 +1,9 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        prereqs = {c: [] for c in range(numCourses)}
+        adj = {c: [] for c in range(numCourses)}
 
         for c, p in prerequisites:
-            prereqs[c].append(p)
+            adj[c].append(p)
 
         visited = set()
 
@@ -13,12 +13,12 @@ class Solution:
 
             visited.add(c)
 
-            for p in prereqs[c]:
+            for p in adj[c]:
                 if not dfs(p):
                     return False
 
             visited.remove(c)
-            prereqs[c] = []
+            adj[c] = []
 
             return True
 
@@ -27,5 +27,3 @@ class Solution:
                 return False
 
         return True
-
-# O(m+n), O(m+n)
