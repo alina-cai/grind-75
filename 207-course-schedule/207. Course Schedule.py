@@ -1,24 +1,27 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        adj = {c: [] for c in range(numCourses)}
+        prereqs = {i: [] for i in range(numCourses)}
 
-        for c, p in prerequisites:
-            adj[c].append(p)
+        for course, prereq in prerequisites:
+            prereqs[course].append(prereq)
 
         visited = set()
 
-        def dfs(c):
-            if c in visited:
+        def dfs(course):
+            if course in visited:
                 return False
 
-            visited.add(c)
+            if not prereqs[course]:
+                return True
 
-            for p in adj[c]:
-                if not dfs(p):
+            visited.add(course)
+
+            for prereq in prereqs[course]:
+                if not dfs(prereq):
                     return False
 
-            visited.remove(c)
-            adj[c] = []
+            visited.remove(course)
+            prereqs[course] = []
 
             return True
 
@@ -27,3 +30,5 @@ class Solution:
                 return False
 
         return True
+
+# O(n*p), O(n)
