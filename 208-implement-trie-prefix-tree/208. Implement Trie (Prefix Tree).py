@@ -16,7 +16,7 @@ class Trie:
         for ch in word:
             if ch not in cur.children:
                 cur.children[ch] = TrieNode()
-            
+
             cur = cur.children[ch]
 
         cur.end = True
