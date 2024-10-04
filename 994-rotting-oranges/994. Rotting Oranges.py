@@ -18,17 +18,17 @@ class Solution:
             for _ in range(len(q)):
                 r, c = q.popleft()
 
-                for nr, nc in directions:
-                    newR, newC = nr + r, nc + c
+                for x, y in directions:
+                    nr, nc = x + r, y + c
 
                     if (
-                        newR in range(ROWS) and
-                        newC in range(COLS) and
-                        grid[newR][newC] == 1
+                        nr in range(ROWS) and
+                        nc in range(COLS) and
+                        grid[nr][nc] == 1
                     ):
-                        q.append((newR, newC))
-                        grid[newR][newC] = 2
+                        q.append((nr, nc))
                         fresh -= 1
+                        grid[nr][nc] = 2
 
             res += 1
 
