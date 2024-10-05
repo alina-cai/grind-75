@@ -8,29 +8,24 @@ class TimeMap:
         if key not in self.storage:
             self.storage[key] = []
 
-        self.storage[key].append([value, timestamp])
+        self.storage[key].append([timestamp, value])
         
 
     def get(self, key: str, timestamp: int) -> str:
         values = self.storage.get(key, [])
-        l = 0
-        r = len(values) - 1
+        l, r = 0, len(values) - 1
         res = ""
 
         while l <= r:
-            m = (l + r) // 2
+            m = (l + r) //2
 
-            if values[m][1] <= timestamp:
-                res = values[m][0]
+            if values[m][0] <= timestamp:
+                res = values[m][1]
                 l = m + 1
             else:
                 r = m - 1
 
         return res
-
-# time: O(log(n))
-# space: O(m * n)
-
         
 
 
