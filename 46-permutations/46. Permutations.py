@@ -3,7 +3,7 @@ class Solution:
         res = []
 
         if len(nums) == 1:
-            res.append(nums.copy())
+            return [nums.copy()]
 
         for i in range(len(nums)):
             n = nums.pop(0)
@@ -11,10 +11,10 @@ class Solution:
 
             for p in perms:
                 p.append(n)
-                res.append(p)
 
+            res.extend(perms)
             nums.append(n)
 
         return res
 
-# O(n!n), O(n)
+# O(nn!)
