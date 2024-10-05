@@ -12,9 +12,7 @@ class Solution:
                 l += 1
                 m += 1
             elif nums[m] == 2:
-                nums[r], nums[m] = nums[m], nums[r]
+                nums[m], nums[r] = nums[r], nums[m]
                 r -= 1
             else:
                 m += 1
-
-        return nums
