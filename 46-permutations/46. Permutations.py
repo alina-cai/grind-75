@@ -2,19 +2,18 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         res = []
 
-        if len(nums) == 1:
-            return [nums.copy()]
+        def backtrack(cur):
+            if len(cur) == len(nums):
+                res.append(cur.copy())
 
-        for i in range(len(nums)):
-            n = nums.pop(0)
-            perms = self.permute(nums)
+                return
 
-            for p in perms:
-                p.append(n)
+            for n in nums:
+                if n not in cur:
+                    cur.append(n)
+                    backtrack(cur)
+                    cur.pop()
 
-            res.extend(perms)
-            nums.append(n)
+        backtrack([])
 
         return res
-
-# O(nn!)
