@@ -1,15 +1,15 @@
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
-        emailsMap = {}
+        emailMap = {}
 
         for i, a in enumerate(accounts):
             for j in range(1, len(a)):
-                if a[j] not in emailsMap:
-                    emailsMap[a[j]] = []
+                if a[j] not in emailMap:
+                    emailMap[a[j]] = []
 
-                emailsMap[a[j]].append(i)
+                emailMap[a[j]].append(i)
 
-        res = []
+        visited = [False] * len(accounts)
 
         def dfs(i, emails):
             if visited[i]:
@@ -19,11 +19,10 @@ class Solution:
 
             for j in range(1, len(accounts[i])):
                 emails.add(accounts[i][j])
-                
-                for e in emailsMap[accounts[i][j]]:
+                for e in emailMap[accounts[i][j]]:
                     dfs(e, emails)
 
-        visited = [False] * len(accounts)
+        res = []
 
         for i, a in enumerate(accounts):
             if visited[i]:
